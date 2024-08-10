@@ -264,3 +264,74 @@ DELIMITER ;
 
 -- Dump completed on 2024-08-09 13:23:26
 SELECT * FROM Customers;
+select * from bookings;
+
+DROP PROCEDURE IF EXISTS CheckBooking;
+
+
+DELIMITER $$
+
+CREATE PROCEDURE CheckBooking(
+    IN p_BookingDate DATE,
+    IN p_TableNumber INT
+)
+BEGIN
+    -- Declare a variable to hold the count of bookings
+    DECLARE v_BookingCount INT;
+    
+    -- Initialize the variable with the count of bookings for the given table and date
+    SELECT COUNT(*) INTO v_BookingCount
+    FROM Booking
+    WHERE BookingDate = p_BookingDate AND TableNumber = p_TableNumber;
+    
+    -- Check if the table is booked
+    IF v_BookingCount > 0 THEN
+        -- Table is booked
+        SELECT CONCAT('Table ', p_TableNumber, ' is already booked') AS BookingStatus;
+    ELSE
+        -- Table is not booked
+        SELECT CONCAT('Table ', p_TableNumber, ' is available') AS BookingStatus;
+    END IF;
+END $$
+
+DELIMITER ;
+
+SELECT * FROM BOOKINGS;
+CALL CheckBooking('2022-10-20', 13);
+SHOW PROCEDURE STATUS WHERE Db = 'littlelemondb';
+SHOW PROCEDURE STATUS LIKE 'CheckBooking';
+DROP PROCEDURE IF EXISTS CheckBooking;
+DELIMITER $$
+
+CREATE PROCEDURE CheckBooking(
+    IN p_BookingDate DATE,
+    IN p_TableNumber INT
+)
+BEGIN
+    DECLARE v_BookingCount INT;
+
+    SELECT COUNT(*) INTO v_BookingCount
+    FROM bookings
+    WHERE BookingDate = p_BookingDate AND TableNumber = p_TableNumber;
+
+    IF v_BookingCount > 0 THEN
+        SELECT CONCAT('Table ', p_TableNumber, ' is already booked') AS BookingStatus;
+    ELSE
+        SELECT CONCAT('Table ', p_TableNumber, ' is available') AS BookingStatus;
+    END IF;
+END $$
+
+DELIMITER ;
+CALL CheckBooking ('2022-10-20', 13);
+
+SHOW GRANTS FOR CURRENT_USER;
+SELECT ROUTINE_NAME
+FROM information_schema.ROUTINES
+WHERE ROUTINE_SCHEMA = 'littlelemondb'
+  AND ROUTINE_NAME = 'CheckBooking';
+
+  SHOW TABLES IN littlelemondb
+
+describe bookings
+
+commit;
