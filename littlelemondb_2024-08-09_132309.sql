@@ -335,3 +335,104 @@ WHERE ROUTINE_SCHEMA = 'littlelemondb'
 describe bookings
 
 commit;
+DELIMITER $$
+
+CREATE PROCEDURE AddValidBooking(
+    IN p_BookingDate DATE,
+    IN p_TableNumber INT,
+    IN p_CustomerID INT
+)
+BEGIN
+    -- Declare a variable to hold the count of bookings
+    DECLARE v_BookingCount INT;
+
+    -- Start the transaction
+    START TRANSACTION;
+
+    -- Check if the table is already booked on the given date
+    SELECT COUNT(*) INTO v_BookingCount
+    FROM bookings
+    WHERE BookingDate = p_BookingDate AND TableNumber = p_TableNumber;
+
+    -- If the table is already booked, rollback the transaction
+    IF v_BookingCount > 0 THEN
+        ROLLBACK;
+        SELECT 'Table is already booked. Reservation declined.' AS BookingStatus;
+    ELSE
+        -- Otherwise, add the new booking record
+        INSERT INTO bookings (BookingDate, TableNumber, CustomerID)
+        VALUES (p_BookingDate, p_TableNumber, p_CustomerID);
+
+        -- Commit the transaction
+        COMMIT;
+        SELECT 'Booking successfully added.' AS BookingStatus;
+    END IF;
+END $$
+
+DELIMITER ;
+
+CALL AddValidBooking('2022-10-20', 13, 3);
+CALL AddValidBooking('2023-11-03', 04, 4);
+commit;
+select * from bookings;
+DESCRIBE BOOKINGS;
+
+DELIMITER $$
+
+CREATE PROCEDURE AddBooking(
+    IN p_BookingID INT,
+    IN p_BookingDate DATE,
+    IN p_TableNumber INT,
+    IN p_CustomerID INT
+)
+BEGIN
+    -- Insert a new booking record into the Booking table
+    INSERT INTO bookings (BookingID, BookingDate, TableNumber, CustomerID)
+    VALUES (p_BookingID, p_BookingDate, p_TableNumber, p_CustomerID);
+    -- Return a success message
+    SELECT 'New Booking Added' AS Message;
+END $$
+
+DELIMITER ;
+CALL AddBooking(9, '2023-06-10', 5, 4);
+DROP Procedure `AddBooking`
+
+DELIMITER $$
+
+CREATE PROCEDURE UpdateBooking(
+    IN p_BookingID INT,
+    IN p_BookingDate DATE
+)
+BEGIN
+    -- Update the booking date for the specified BookingID
+    UPDATE bookings
+    SET BookingDate = p_BookingDate
+    WHERE BookingID = p_BookingID;
+
+    -- Return a success message
+    SELECT 'Booking Updated' AS Message;
+END $$
+
+DELIMITER ;
+
+CALL UpdateBooking(9, '2023-06-10');
+
+DELIMITER $$
+
+CREATE PROCEDURE CancelBooking(
+    IN p_BookingID INT
+)
+BEGIN
+    -- Delete the booking record with the specified BookingID
+    DELETE FROM bookings
+    WHERE BookingID = p_BookingID;
+
+    -- Return a message indicating that the booking was cancelled
+    SELECT CONCAT('Booking ', p_BookingID, ' cancelled') AS Message;
+END $$
+
+DELIMITER ;
+
+CALL CancelBooking(8);
+commit;
+
