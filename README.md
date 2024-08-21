@@ -4,13 +4,14 @@ This is a repository for my capstone project
 Subtitle: Design and implementation of Little Lemon DBMS
 Author: Rukiyat Diekola
 # Table of Contents
-[Project Overview](#Project-Overview)
-[System Design](#System-Design)
-[Stored Procedures](#Stored-Prodecures)
-[Views](#Views)
-[Queries](#Queries)
-[Data Visualization](#Data-Visualization)
-[Conclusion](#Conclusion)
+-[Project Overview](#Project-Overview)
+-[System Design](#System-Design)
+-[Stored Procedures](#Stored-Prodecures)
+-[Views](#Views)
+-[Join](#Join)
+-[Python-Database Client](#Python-Database-Client)
+-[Data Visualization](#Data-Visualization)
+-[Conclusion](#Conclusion)
 
 # Project Overview
 This project is aimed at providing a functional database managament system in order to record their bookings, their customers, staffs and keep track of their daily sales. It also entails a visual representation their sales across the world. The data model and its script was designed using MySQL Workbench 8.0 CE and the data visualization was achieved uisng Tableau Public 2022.2
@@ -23,7 +24,30 @@ This project is aimed at providing a functional database managament system in or
 - Normalization: Normalization was done to ensure database integrity and reduce dedundacy. This was achieved by ensuring that there are no repetitive data and  no partial dependancy relationships betweeen daa.
 
 # Stored Procedures
-in order to achieve a Recompiled execution, some stored procedures were created. This will help to save and reuse queries to improve running performance of the database. The Stored Procedures created for Little Lemon Restaurant are:
+In order to achieve a Recompiled execution, some stored procedures were created. This will help to save and reuse queries to improve running performance of the database. The Stored Procedures created for Little Lemon Restaurant are:
+-[Add Booking](Little-Lemon-AddBooking.PNG)
+-[Add Valid Booking](Little-Lemon-AddValidBooking.PNG)
+-[Cancel Booking](Little-Lemon-CancelBooking.PNG)
+-[Cancel Order](Little-Lemon-CancelOrder.PNG)
+-[Check Bookings](Little-Lemon-CheckBooking.PNG)
+-[Get Maximum Quantity](Little-Lemon-GetMaxQuantity)
+-[Update Booking](Little-Lemon-UpdateBooking)
 
 
-View my tableau visualization on tableau public (https://public.tableau.com/app/profile/rukiyat.diekola/vizzes)
+# Views
+Similar to stored procedures, Views are created inorder to reuse queries. This helps in maintaining queries, enhancing database security and data integrity. A Orderview was created for little lemon to retrive information about the OrderID, Quantity and TotalCost.
+
+# Join
+Tables were joined to retrieve information of the customer details, items purchased, and the total cost, joining them on the bookingID. The Join created is shown [here](Little-Lemon-join-table2.PNG)
+
+# Python-Database Client
+A booking system was created using Jupiter Notebook. See [here](Little Lemon DB PY.ipynb) for details
+
+# Data Visualization
+View my data visualization on tableau public [HERE](https://public.tableau.com/app/profile/rukiyat.diekola/vizzes)
+
+# Conclusion
+A database management system has been craeted for Little Lemon Restaurant. This allows them to store information on customer orders and bookings as well as staff while maintaining data integrity and security. The database will also allow to retrieve information as needed, use stored procedures, Views and join table. The booking system has also been craeted using Jupyter notebook. Bar charts, maps, and pie chart has also been craeted for visualization of sales records of Little Lemon Restaurant.
+
+
+
