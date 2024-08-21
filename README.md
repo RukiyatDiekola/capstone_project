@@ -26,12 +26,12 @@ This project is aimed at providing a functional database managament system in or
 # Stored Procedures
 In order to achieve a Recompiled execution, some stored procedures were created. This will help to save and reuse queries to improve running performance of the database. The Stored Procedures created for Little Lemon Restaurant are:
 - [Add Booking](Little%20Lemon%20AddBooking.PNG)
-- [Add Valid Booking](Little%20Lemon%20AddValidBooking.PNG)
+- [Add Valid Booking](Little%20Lemon%20AddvalidBooking.PNG)
 - [Cancel Booking](Little%20Lemon%20CancelBooking.PNG)
 - [Cancel Order](Little%20Lemon%20CancelOrder.PNG)
 - [Check Bookings](Little%20Lemon%20CheckBooking.PNG)
-- [Get Maximum Quantity](Little%20Lemon%20GetMaxQuantity)
-- [Update Booking](Little%20Lemon%20UpdateBooking)
+- [Get Maximum Quantity](Little%20Lemon%20GetMaxQuantity.PNG)
+- [Update Booking](Little%20Lemon%20UpdateBooking.PNG)
 
 # Views
 Similar to stored procedures, Views are created inorder to reuse queries. This helps in maintaining queries, enhancing database security and data integrity. A Orderview was created for little lemon to retrive information about the OrderID, Quantity and TotalCost. See [Here](Little%20Lemon%20OrdersView.png)
