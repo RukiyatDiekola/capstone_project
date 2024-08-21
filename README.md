@@ -25,22 +25,22 @@ This project is aimed at providing a functional database managament system in or
 
 # Stored Procedures
 In order to achieve a Recompiled execution, some stored procedures were created. This will help to save and reuse queries to improve running performance of the database. The Stored Procedures created for Little Lemon Restaurant are:
-- [Add Booking](Little-Lemon-AddBooking.PNG)
-- [Add Valid Booking](Little-Lemon-AddValidBooking.PNG)
-- [Cancel Booking](Little-Lemon-CancelBooking.PNG)
-- [Cancel Order](Little-Lemon-CancelOrder.PNG)
-- [Check Bookings](Little-Lemon-CheckBooking.PNG)
-- [Get Maximum Quantity](Little-Lemon-GetMaxQuantity)
-- [Update Booking](Little-Lemon-UpdateBooking)
+- [Add Booking](Little%20Lemon%20AddBooking.PNG)
+- [Add Valid Booking](Little%20Lemon%20AddValidBooking.PNG)
+- [Cancel Booking](Little%20Lemon%20CancelBooking.PNG)
+- [Cancel Order](Little%20Lemon%20CancelOrder.PNG)
+- [Check Bookings](Little%20Lemon%20CheckBooking.PNG)
+- [Get Maximum Quantity](Little%20Lemon%20GetMaxQuantity)
+- [Update Booking](Little%20Lemon%20UpdateBooking)
 
 # Views
-Similar to stored procedures, Views are created inorder to reuse queries. This helps in maintaining queries, enhancing database security and data integrity. A Orderview was created for little lemon to retrive information about the OrderID, Quantity and TotalCost. See [Here](Little Lemon OrdersView.png)
+Similar to stored procedures, Views are created inorder to reuse queries. This helps in maintaining queries, enhancing database security and data integrity. A Orderview was created for little lemon to retrive information about the OrderID, Quantity and TotalCost. See [Here](Little%20Lemon%20OrdersView.png)
 
 # Join
-Tables were joined to retrieve information of the customer details, items purchased, and the total cost, joining them on the bookingID. The Join created is shown [here](Little Lemon join table2.PNG)
+Tables were joined to retrieve information of the customer details, items purchased, and the total cost, joining them on the bookingID. The Join created is shown [here](Little%20Lemon%20join%20table2.PNG)
 
 # Python-Database Client
-A booking system was created using Jupiter Notebook. See [here](Little Lemon DB PY.ipynb) for details
+A booking system was created using Jupiter Notebook. See [here](Little%20Lemon%20DB%20PY.ipynb) for details
 
 # Data Visualization
 View my data visualization on tableau public [HERE](https://public.tableau.com/app/profile/rukiyat.diekola/vizzes)
